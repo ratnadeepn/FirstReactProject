@@ -1,21 +1,11 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 function App() {
-  
-  return (
-    <>
-        <Rendering></Rendering>        
-        <Header title="my name is ratnadeep"></Header>
-    </>
-  )
-}
-
-function Rendering(){
   const [title, setTitle] = useState("my name is ratnadeep");
   const [btn, btnData] = useState(0);
 
   function updateContent(){
-    setTitle("my name is " + parseInt(Math.random()*10));
+    setTitle("my name is " + Math.random());
   }
 
   function updateButton(){
@@ -23,22 +13,28 @@ function Rendering(){
         
   }
   
-  return(
-    <>
+  return (
+    <div>
         <button onClick={updateContent}>Click me to change the DOM title</button>
         <Header title={title}></Header>
-        <button onClick={updateButton}>Click count is {btn}</button>
-    </>
+        <Header title="my name is ratnadeep"></Header>
+        <Header title="my name is ratnadeep"></Header>
+        <Header title="my name is ratnadeep"></Header>
+        <Header title="my name is ratnadeep"></Header>
+        <Header title="my name is ratnadeep"></Header>
+        <button onClick={updateButton}>Click count is {btn}</button>       
+        
+    </div>
   )
 }
 
-function Header({title}){
-    return(
-      <div>
-        {title}
-      </div>
-    )
-}
+const Header = React.memo(function Header({title}){
+  return(
+    <div>
+      {title}
+    </div>
+  )
+});
 
 
 export default App
